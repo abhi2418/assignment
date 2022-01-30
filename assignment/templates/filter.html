@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{% load static %}
+
+
+{%block content%}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    startdate: <input type="date" id="start" name="start">
+    
+
+    enddate: <input type="date" id="end" name="end">
+   
+    <!-- <a <input  class="btn btn-sm btn-info" href="{% url 'filter_data' %}"><b>Edit</b></a>   -->
+</form>
+
+{% for i in item %}
+
+<br>
+<p> </p>
+<td>{{ i.image_name }}</td>
+
+<br>
+<p> </p>
+<img src="{% static i.image_name %}">
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{% load static %}
+
+
+{%block content%}
+
+<form method="post">
+    {% csrf_token %}
+    START: <input type="date" name="start">
+    <button type="submit">SUBMIT</button>
+
+</form>
+
+{% for i in item %}
+<tr>
+    <td>{{ i.image_name }}</td>
+<!-- <td>{{ i.image_name }}</td>
+    <br>
+    <p>   </p>
+    <td>{{ i.objects_detected }}</td>
+    <br> -->
+    <p>   </p>
+<td>{{ i.date }}</td>  
+    <br>
+    <p>   </p>
+    <img src="{% static i.image_name %}">
+    <br>
+    <p>   </p>
+    
+
+
+</tr>
+{% endfor %}
+{%endblock content%}

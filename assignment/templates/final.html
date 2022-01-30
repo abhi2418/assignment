@@ -1,0 +1,59 @@
+
+
+{%extends 'base.html'%}
+{% load static %}
+
+
+{%block content%}
+<style>
+    table, th, td {
+      border:1px solid black;
+    }
+    </style>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p><h1>START DATE</h1> </p>
+    <input type="date" id="start" name="start">
+    
+    <br>
+    <p><h1>END DATE</h1></p>
+   <input type="date" id="end" name="end">
+    <button type="submit">upload</button>
+</form>
+
+<h2>Fetch data and generate report </h2>
+<a  href="download"> Download Document </a>
+
+<table style="width: 50%">
+  <tr>
+    <td>Image Name</td>
+    <td>Detection</td>
+    <td>Image</td>
+  </tr>
+  {% for i in item %}
+  <tr>
+   
+    <td>{{ i.image_name }}</td>
+    <td>{{i.objects_detected}}</td>
+    <td><img src="{% static i.image_name %}"></td>
+   
+  </tr>
+  {% endfor %}
+</table>
+
+
+
+
+<!-- {% for i in item %}
+
+<br>
+<p> </p>
+<td>{{ i.image_name }}</td>
+
+<br>
+<p> </p>
+<img src="{% static i.image_name %}">
+{% endfor %} -->
+
+{% endblock content %}
